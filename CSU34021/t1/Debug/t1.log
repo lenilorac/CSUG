@@ -1,8 +1,0 @@
-﻿  stdafx.cpp
-  t1.cpp
-Debug\t1.obj : warning LNK4042: object specified more than once; extras ignored
-t1.obj : error LNK2019: unresolved external symbol _min referenced in function _wmain
-t1.obj : error LNK2019: unresolved external symbol _p referenced in function _wmain
-t1.obj : error LNK2019: unresolved external symbol _gcd referenced in function _wmain
-t1.obj : error LNK2001: unresolved external symbol _g
-S:\College\CSU\CSU34021\t1\Debug\t1.exe : fatal error LNK1120: 4 unresolved externals
