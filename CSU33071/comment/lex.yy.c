@@ -362,8 +362,8 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[15] =
     {   0,
-        0,    0,    8,    6,    1,    6,    6,    4,    5,    0,
-        3,    2,    2,    0
+        0,    0,    8,    6,    1,    6,    6,    3,    4,    0,
+        5,    2,    2,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -737,17 +737,17 @@ YY_RULE_SETUP
 case 3:
 YY_RULE_SETUP
 #line 8 "comment.l"
-{printf("%s", yytext);}
+{if(comment==0){comment = 1;}}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 9 "comment.l"
-{comment = 1;}
+{if(comment == 0){printf("syntax error\n"); return 0;}  else{comment = 0;}}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 10 "comment.l"
-{if(comment == 0){printf("syntax error\n"); return;}  else{comment = 0;}}
+{printf("%s", yytext);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
@@ -1770,7 +1770,7 @@ void yyfree (void * ptr )
 int main()
 {
   yylex();
-  if(comment == 1) printf("sytax error\n");
+  if(comment == 1) printf("syntax error\n");
   return 0;
 }
 
