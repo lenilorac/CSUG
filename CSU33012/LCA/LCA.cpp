@@ -82,6 +82,8 @@ int main()
 	root->left->left->right = newNode(9);
 
 	cout << "LCA of a null tree = " << findLCA(NULL, 0, 0);	
+	cout << "LCA of a non-existent path = " << findLCA(root, -1, -1);
+	cout << "LCA(1, 1) = " << finaLCA(root, 1, 1);
 	cout << "LCA(4, 5) = " << findLCA(root, 4, 5); 
 	cout << "LCA(4, 6) = " << findLCA(root, 4, 6); 
 	cout << "LCA(3, 4) = " << findLCA(root, 3, 4); 
