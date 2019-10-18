@@ -6,7 +6,7 @@ using namespace std;
 
 // Utility function creates a new binary tree node with given key 
 Node * newNode(int k) 
-{ 
+{
 	Node *temp = new Node; 
 	temp->key = k; 
 	temp->left = temp->right = NULL; 
