@@ -2,7 +2,7 @@
 #include "LCA.cpp"
 
 
-int main(){
+void test() {
   // Let us create the Binary Tree shown in above diagram. 
   Node * root = newNode(1); 
   root->left = newNode(2); 
@@ -24,6 +24,4 @@ int main(){
   cout << "LCA(9, 5) = " << findLCA(root, 9, 5);
   cout << "LCA(7, 9) = " << findLCA(root, 7, 9);
   cout << "LCA(4, 8) = " << findLCA(root, 4, 8);
-
-  return 0;
 }

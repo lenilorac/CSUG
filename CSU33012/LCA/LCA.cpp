@@ -4,6 +4,15 @@
 
 using namespace std; 
 
+// Utility function creates a new binary tree node with given key 
+Node * newNode(int k) 
+{
+	Node *temp = new Node; 
+	temp->key = k; 
+	temp->left = temp->right = NULL; 
+	return temp; 
+} 
+
 // Finds the path from root node to given root of the tree, Stores the 
 // path in a vector path[], returns true if path exists otherwise false 
 bool findPath(Node *root, vector<int> &path, int k) 
@@ -49,7 +58,6 @@ int findLCA(Node *root, int n1, int n2)
 			break; 
 	return path1[i-1]; 
 } 
-
 
 int main() 
 { 
