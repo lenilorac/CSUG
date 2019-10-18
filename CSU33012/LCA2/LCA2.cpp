@@ -60,22 +60,23 @@ int findLCADAG(Node* root, Node* n1, Node* n2){
   if (root -> key == n1 -> key || root -> key == n2 -> key) return root -> key;
 
   if (n1 -> key == n2 -> key) return n2 -> key;
+  //checking basic requirements
 
-  int path[SIZE] = {};
+  int path[SIZE] = {}; //creating an array that would store matching parent nodes, woudl break with a more complex graph?
   int c = 0;
 
   for (int i = 0; i < sizeof(n1->p) && n1->p[i] != NULL; i++){
-    for (int j = 0; j < sizeof(n2 -> p) && p[j] != NULL; j++){
+    for (int j = 0; j < sizeof(n2 -> p) && n2->p[j] != NULL; j++){
       if (n1->p[i]->key == n2->p[j]->key){
         path[c] = n2 -> p[j]->key;
         c++;
-        //storing all the matching parent keys, doesn't quite make sense
+        //storing all the matching parent keys, doesn't quite make sense, doesn't take in account all the paths?
       }
     }
   }
 
-  if (path == NULL) return -1;
-  else return max_element(path, lca+sizeof(path);
+  if (path == {}) return -1;
+  else return max_element(path, lca+sizeof(path));
 
 }
 
