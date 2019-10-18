@@ -55,15 +55,23 @@ int findLCA(Node *root, Node n1, Node n2)
 
 //tried constructing a graph
 int findLCADAG(Node* root, Node* n1, Node* n2){
-  if (root == NULL) return -1;
+  if (root == NULL || n1 == NULL || n2 == NULL) return -1;
 
   if (root -> key == n1 -> key || root -> key == n2 -> key) return root -> key;
 
   if (n1 -> key == n2 -> key) return n2 -> key;
+	
+  for (int i = 0; i < sizeof(n2->p) && n2->p[i] != NULL;i++){
+    if (n1 == n2->p[i]) return n1;	  
+  }
+	
+  for (int i = 0 ; i < sizeof(n1->p) n1->p[i] != NULL;i++){
+    if (n2 == n1->p[i])	  
+  }
   //checking basic requirements
 
-  int path[SIZE] = {}; //creating an array that would store matching parent nodes, woudl break with a more complex graph?
-  int c = 0;
+  int path[SIZE] = {}; //creating an array that would store the keys of matching parent nodes, would break with a more complex graph?
+  int c = 0; // counter
 
   for (int i = 0; i < sizeof(n1->p) && n1->p[i] != NULL; i++){
     for (int j = 0; j < sizeof(n2 -> p) && n2->p[j] != NULL; j++){
