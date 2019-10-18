@@ -1,25 +1,8 @@
 // C++ Program for Lowest Common Ancestor in a Binary Tree 
 // A O(n) solution to find LCA of two given values n1 and n2 
-#include <iostream> 
-#include <vector> 
+#include "LCA.h"
 
 using namespace std; 
-
-// A Binary Tree node 
-struct Node 
-{ 
-	int key; 
-	struct Node *left, *right; 
-}; 
-
-// Utility function creates a new binary tree node with given key 
-Node * newNode(int k) 
-{ 
-	Node *temp = new Node; 
-	temp->key = k; 
-	temp->left = temp->right = NULL; 
-	return temp; 
-} 
 
 // Finds the path from root node to given root of the tree, Stores the 
 // path in a vector path[], returns true if path exists otherwise false 
@@ -67,30 +50,9 @@ int findLCA(Node *root, int n1, int n2)
 	return path1[i-1]; 
 } 
 
-// Driver program to test above functions 
+
 int main() 
 { 
-	// Let us create the Binary Tree shown in above diagram. 
-	Node * root = newNode(1); 
-	root->left = newNode(2); 
-	root->right = newNode(3); 
-	root->left->left = newNode(4); 
-	root->left->right = newNode(5); 
-	root->right->left = newNode(6); 
-	root->right->right = newNode(7); 
-	root->left->left->left = newNode(8);
-	root->left->left->right = newNode(9);
-
-	cout << "LCA of a null tree = " << findLCA(NULL, 0, 0);	
-	cout << "LCA of a non-existent path = " << findLCA(root, -1, -1);
-	cout << "LCA(1, 1) = " << finaLCA(root, 1, 1);
-	cout << "LCA(4, 5) = " << findLCA(root, 4, 5); 
-	cout << "LCA(4, 6) = " << findLCA(root, 4, 6); 
-	cout << "LCA(3, 4) = " << findLCA(root, 3, 4); 
-	cout << "LCA(2, 4) = " << findLCA(root, 2, 4); 
-	cout << "LCA(9, 5) = " << findLCA(root, 9, 5);
-	cout << "LCA(7, 9) = " << findLCA(root, 7, 9);
-	cout << "LCA(4, 8) = " << findLCA(root, 4, 8);
 	return 0; 
 } 
 
