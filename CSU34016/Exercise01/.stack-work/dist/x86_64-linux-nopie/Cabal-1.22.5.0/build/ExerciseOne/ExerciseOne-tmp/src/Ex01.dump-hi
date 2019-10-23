@@ -1,0 +1,97 @@
+
+==================== FINAL INTERFACE ====================
+2019-10-04 19:58:42.776325 UTC
+
+interface main@main:Ex01 7103
+  interface hash: f768fc06a8301039571513fbd155bcda
+  ABI hash: 3b8a37963ed4061d785021b880386fc8
+  export-list hash: 41f000826fcfe12beb935d63fd552ae9
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: dea0ff1c5f2d251f52e3d78b20fd0ad8
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Ex01.commonLen
+  Ex01.commonLen2
+  Ex01.nth
+  Ex01.raise
+module dependencies:
+package dependencies: base-4.8.2.0* ghc-prim-0.4.0.0
+                      integer-gmp-1.0.0.0
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Monoid
+                         base-4.8.2.0:Data.Type.Equality base-4.8.2.0:GHC.Generics
+import  -/  base-4.8.2.0:Data.Char c8f827952d4111ae2e47c0b105217cdb
+import  -/  base-4.8.2.0:Data.Foldable 2ce969969ad5231eb40bd713f94f05ad
+import  -/  base-4.8.2.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.2.0:GHC.List 0c736920522bbd14b770342776012ab6
+import  -/  base-4.8.2.0:GHC.Num 9f42750c866f5832ca565146bd660c60
+import  -/  base-4.8.2.0:GHC.Unicode cdf84fc3abbaf34ba6b6645291cef991
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+a1bf4b4ce9408c48fd538b007afa8f09
+  $wcommonLen2 ::
+    GHC.Classes.Eq a => GHC.Prim.Int# -> [a] -> [a] -> GHC.Prim.Int#
+  {- Arity: 4, Strictness: <L,U(C(C1(U)),A)><L,U><S,U><L,U>,
+     Inline: [0] -}
+2133ffe47f85b3b827d3a89a8f4365f1
+  commonLen :: GHC.Classes.Eq a => [a] -> [a] -> GHC.Types.Int
+  {- Arity: 3, Strictness: <L,U(C(C1(U)),A)><S,U><L,U>m,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ a $dEq :: GHC.Classes.Eq a x :: [a] y :: [a] ->
+                 Ex01.commonLen2 @ a $dEq Ex01.commonLen1 x y) -}
+09956de22209888a08b5832fafed4bdd
+  commonLen1 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0) -}
+494d23468707f82d86a01261c4fc53d7
+  commonLen2 ::
+    GHC.Classes.Eq a => GHC.Types.Int -> [a] -> [a] -> GHC.Types.Int
+  {- Arity: 4, Strictness: <L,U(C(C1(U)),A)><S,1*U(U)><S,U><L,U>m,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ @ a
+                   w :: GHC.Classes.Eq a
+                   w1 :: GHC.Types.Int
+                   w2 :: [a]
+                   w3 :: [a] ->
+                 case w1 of ww { GHC.Types.I# ww1 ->
+                 case Ex01.$wcommonLen2 @ a w ww1 w2 w3 of ww2 { DEFAULT ->
+                 GHC.Types.I# ww2 } }) -}
+c54c0063973c938d1513580ac725da75
+  nth :: GHC.Types.Int -> [a] -> a
+  {- Arity: 2, Strictness: <S,1*U(U)><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a x :: GHC.Types.Int y :: [a] ->
+                 case x of wild { GHC.Types.I# x1 ->
+                 GHC.List.$w!! @ a y (GHC.Prim.-# x1 1) }) -}
+3fa3bd6aa6b08140bfac9c7b5cdd38a0
+  raise :: GHC.Base.String -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ n :: GHC.Base.String ->
+                 GHC.Base.build
+                   @ GHC.Types.Char
+                   (\ @ b1
+                      c :: GHC.Types.Char -> b1 -> b1[OneShot]
+                      n1 :: b1[OneShot] ->
+                    GHC.Base.foldr
+                      @ GHC.Types.Char
+                      @ b1
+                      (GHC.Base.mapFB
+                         @ GHC.Types.Char
+                         @ b1
+                         @ GHC.Types.Char
+                         c
+                         GHC.Unicode.toUpper)
+                      n1
+                      n)) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
