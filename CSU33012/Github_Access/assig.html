@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+
+  <style id="compiled-css" type="text/css">
+      body {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	line-height: 2.0;
+}
+
+.container {
+	margin-top: 100px;
+}
+
+#app-name {
+	font-weight: 700;
+}
+
+h1, h3, h5, p {
+	text-align: center;
+}
+
+.form-control {
+	width: 70%;
+	margin: 0 auto;
+	font-weight: 300;
+}
+
+#user-avatar {
+	height: 200px;
+	width: 200px;
+	margin-left: 175px;
+	margin-bottom: 20px;
+}
+
+#user-name {
+	text-align: center;
+	font-weight: 700;
+}
+
+#profile-hr {
+	margin-top: 50px;
+}
+
+.follower-avatar {
+	height: 75px;
+	width: 75px;
+	margin-left: 233px;
+	padding: 10px;
+}
+
+#follower-login {
+	text-align: center;
+}
+
+#follower-hr {
+	margin-top: -5px;
+	width: 800px;
+}
+
+#view-profile {
+	margin-top: 30px;
+	font-weight: 300;
+}
+
+.page-header {
+	text-align: center;
+	margin: 30px;
+	margin-top: 100px;
+}
+
+#load-more-div {
+	width: 100%;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+#load-more {
+	text-align: center;
+	margin: 0 auto;
+	background: #007bff;
+	padding: 1em;
+	padding-left: 2em;
+	padding-right: 2em;
+	color: white;
+}
+
+#followers-count-div {
+	padding-top: 35px;
+}
+
+
+  </style>
+
+
+ 
+
+  <script type="text/javascript">//<![CDATA[
+
+    window.onload=function(){
+      
+$(document).ready(function(){
+
+  $('#load-more').hide();
+
+  $('#searchUser').on('keyup', function(e){
+    let username = e.target.value;
+
+    // Make request to Github
+    $.ajax({
+      url:'https://api.github.com/users/'+username,
+      data:{
+        client_id:'9ecc0f206ecd34f2f552',
+        client_secret:'6eee17df91630a531ea2acf49848dec408079e9c'
+      }
+    }).done(function(user){
+      $.ajax({
+        url:'https://api.github.com/users/'+username+'/followers?per_page=100&page=1',
+        data:{
+          client_id:'9ecc0f206ecd34f2f552',
+          client_secret:'6eee17df91630a531ea2acf49848dec408079e9c'
+        }
+      }).done(function(followers){
+        $.each(followers, function(index, follower){
+          $('#followers').append(`
+            <div>
+              <div class="row">
+                <div class="col-md-6">
+                <img class="follower-avatar rounded-circle" src="${follower.avatar_url}" alt="" />
+                <p id="follower-login">${follower.login}</p>
+                </div>
+                <div class="col-md-6">
+                  <p id="view-profile"><a target="_blank" href="${follower.html_url}">View Profile ></a></p>
+                </div>
+              </div>
+              <hr id="follower-hr"/>
+            </div>
+          `);
+        });
+      });
+      $('#load-more').show();
+      $('#profile').html(`
+        <div>
+            <div class="row">
+              <div class="col-md-6">
+                <img class="rounded-circle" id="user-avatar" src="${user.avatar_url}">
+                <div>
+            		<h3 id="user-name">${user.name}</h3>
+          		</div>
+              </div>
+              <div class="col-md-6" id="followers-count-div">
+              	<h5>Followers</h5>
+              	<p>${user.followers}</p>
+              	<h5>Following</h5>
+              	<p>${user.following}</p>
+              	<p><a target="_blank" href="${user.html_url}">View Profile ></a></p>
+              </div>
+            </div>
+        </div>
+        <hr id="profile-hr" />
+        <h4 class="page-header">${user.name}'s followers</h4>
+        <div id="followers"></div>
+      `);
+    });
+  });
+});
+
+    }
+
+  //]]></script>
+
+</head>
+<body>
+    <body>
+    <div class="container">
+      <div class="searchContainer">
+        <h1 id="app-name">Search Github Users</h1>
+        <p class="lead">Start typing a valid GitHub username.</p>
+        <input type="text" id="searchUser" class="form-control" placeholder="Github Username...">
+      </div>
+      <br>
+      <div id="profile"></div>
+      <div class="container" id="load-more-div">
+      <a href="#" id="load-more">Load more</a>
+      </div>
+
+    </div>
+  </body>
+
+  
+
+</body>
+</html>
