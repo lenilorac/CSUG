@@ -1,4 +1,5 @@
-# 2
+# Notes
+## 2
 
 from mcq:
 
@@ -61,7 +62,7 @@ Domain Definition
 - To increate the maximum width of a CHAR/NUMBER field use ALTER TABLE with MODIFY.
 - MODIFY can also add NULL specification.
 
-#3
+# 3
 mcq:
 
 - INSERT into employee VALUE(1002, Joey, 2000);
@@ -113,7 +114,7 @@ INSERT
 - Multi-row insert statement, source of the new rows are a db query specified in the statement.
 - The query cannot contain ORDER BY clause
 
-#4
+# 4
 mcq:
 - SELECT, FROM, WHERE is the order of keywords for sql.
 - A subquery in an SQL SELECT statement is enclosed in parenthesis.
@@ -133,7 +134,7 @@ mcq:
 - All aggregate functions except Count(*) ignore null values in their input collection.
 - A Boolean data type that can take values true, false, and unknown.
 
-5#
+# 5
 - Create a view - CREATE VIEW
 - To update an SQL view, the DBMS must be able to associate the column(s)
   to be updated with a particular underlying table.
