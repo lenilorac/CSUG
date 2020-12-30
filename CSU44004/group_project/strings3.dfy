@@ -39,7 +39,7 @@ lemma SubstringNegationLemma(sub:string, str:string)
 method isSubstring(sub: string, str: string) returns (res:bool)
 	ensures  res <==> isSubstringPred(sub, str)
 	ensures  res ==> isSubstringPred(sub, str)
-	ensures  !res ==> !isSubstringPred(sub, str)
+	// ensures  !res ==> !isSubstringPred(sub, str)
 	ensures  isSubstringPred(sub, str) ==> res
 	ensures  isSubstringPred(sub, str) ==> res
 	ensures !res <==> isNotSubstringPred(sub, str) // This postcondition follows from the above lemma.
@@ -95,7 +95,7 @@ method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: 
 		var i: nat := 0;
 
 		while (i <= |str1| - k && found == false)
-		decreases |str1| - k - i
+		decreases |str1| - k - i + (if !found then 1 else 0)
 		invariant found ==> haveCommonKSubstringPred(k,str1,str2)
 		invariant forall x, y :: 0 <= x < i && found == false && y == x + k && y <= |str1| ==> isNotSubstringPred(str1[x..y], str2)		
 		{
@@ -122,7 +122,7 @@ method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)
 		decreases len
 		invariant forall i :: len < i <= |str1| ==> !haveCommonKSubstringPred(i,str1,str2)
 	{
-				hasCommon := haveCommonKSubstring(len, str1, str2);
+		hasCommon := haveCommonKSubstring(len, str1, str2);
 		if(hasCommon){
 			return len;
 		}
